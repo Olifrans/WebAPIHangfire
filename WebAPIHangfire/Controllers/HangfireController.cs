@@ -12,18 +12,16 @@ namespace WebAPIHangfire.Controllers
     [Route("api/[controller]")]
     public class HangfireController : ControllerBase
     {
-
-
-        //// GET: HangfireController
-        //[HttpGet]
-        //public IActionResult Get()
-        //{
-        //    return Ok("Teste API Hangfire WebApi");
-        //}
+        // GET: HangfireController
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok("Teste API Hangfire WebApi");
+        }
 
 
         //POST: HangfireController
-       [HttpPost]
+        [HttpPost]
        [Route("[action]")]
         public IActionResult BemVimdos()
         {
@@ -49,7 +47,6 @@ namespace WebAPIHangfire.Controllers
         public IActionResult DatabaseUpdate()
         {
             RecurringJob.AddOrUpdate(() => Console.WriteLine("Database update"), Cron.Minutely);
-
             return Ok("Database check job initiated!");
         }
 
