@@ -54,6 +54,19 @@ namespace WebAPIHangfire.Controllers
         }
 
 
+        //POST: HangfireController
+        [HttpPost]
+        [Route("[action]")]
+        public IActionResult Comfirmar()
+        {
+            int timeInSeconds = 30;
+            var parentJobId = BackgroundJob.Schedule(() => Console.WriteLine("Voce pediu para remover sua inscrição"), TimeSpan.FromSeconds(timeInSeconds));
+
+            BackgroundJob.ContinueJobWith(parentJobId, () => Console.WriteLine("Voce não esta mais inscrito"));
+            return Ok("Confirmado a criação do Job!");
+        }
+
+
         public void SendBemVimdosEmail(string text)
         {
             Console.WriteLine(text);
