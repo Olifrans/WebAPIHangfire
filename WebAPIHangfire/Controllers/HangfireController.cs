@@ -22,8 +22,6 @@ namespace WebAPIHangfire.Controllers
         //}
 
 
-
-
         //POST: HangfireController
        [HttpPost]
        [Route("[action]")]
